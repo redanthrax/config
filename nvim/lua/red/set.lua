@@ -20,6 +20,8 @@ vim.g.mapleader = " "
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.clipboard = "unnamedplus"
+
 local cmd = vim.cmd
 
 cmd "hi Normal guibg=NONE ctermbg=NONE"

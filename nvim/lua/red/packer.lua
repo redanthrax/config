@@ -9,7 +9,6 @@ return require('packer').startup(function(use)
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
     use("kyazdani42/nvim-web-devicons")
-    use("nvim-treesitter/nvim-treesitter")
     use("nvim-telescope/telescope.nvim")
     use("preservim/nerdtree")
     use("nvim-treesitter/nvim-treesitter", {
@@ -38,4 +37,8 @@ return require('packer').startup(function(use)
     use("saadparwaiz1/cmp_luasnip")
 
     use("xiyaowong/nvim-transparent")
+
+    use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
+    use("tpope/vim-abolish")
+    use("olimorris/onedarkpro.nvim")
 end)
