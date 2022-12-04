@@ -210,3 +210,15 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	include = nil, -- Load all languages
 	exclude = {},
 })
+
+require'lspconfig'.astro.setup{
+    cmd = { "astro-ls", "--stdio" },
+    filetypes = { "astro" },
+    init_options = {
+        configuration = {},
+        typescript = {
+            serverPath = ""
+        }
+    }
+}
+

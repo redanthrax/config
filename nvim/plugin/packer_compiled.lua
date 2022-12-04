@@ -169,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/red/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["onedarkpro.nvim"] = {
+    loaded = true,
+    path = "/home/red/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
+    url = "https://github.com/olimorris/onedarkpro.nvim"
+  },
   ["oxocarbon.nvim"] = {
     loaded = true,
     path = "/home/red/.local/share/nvim/site/pack/packer/start/oxocarbon.nvim",
