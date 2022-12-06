@@ -112,6 +112,8 @@ local function config(_config)
 	}, _config or {})
 end
 
+require("lspconfig").astro.setup(config())
+
 require("lspconfig").zls.setup(config())
 
 require("lspconfig").tsserver.setup(config())
@@ -138,22 +140,10 @@ require("lspconfig").gopls.setup(config({
 	},
 }))
 
-require("lspconfig").astro.setup(config({
-    cmd = { "astro-ls", "--stdio" }
-}))
 
 -- who even uses this?
 require("lspconfig").rust_analyzer.setup(config({
 	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-	--[[
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
-        },
-    }
-    --]]
 }))
 
 require("lspconfig").sumneko_lua.setup(config({
@@ -180,6 +170,13 @@ require("lspconfig").sumneko_lua.setup(config({
 		},
 	},
 }))
+
+require'nvim-treesitter.configs'.setup {
+    auto_install = true,
+    highlight = {
+        enable = true,
+    }
+}
 
 local opts = {
 	-- whether to highlight the currently hovered symbol
@@ -214,5 +211,3 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	include = nil, -- Load all languages
 	exclude = {},
 })
-
-
