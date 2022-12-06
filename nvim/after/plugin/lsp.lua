@@ -138,6 +138,10 @@ require("lspconfig").gopls.setup(config({
 	},
 }))
 
+require("lspconfig").astro.setup(config({
+    cmd = { "astro-ls", "--stdio" }
+}))
+
 -- who even uses this?
 require("lspconfig").rust_analyzer.setup(config({
 	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
@@ -211,14 +215,4 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	exclude = {},
 })
 
-require'lspconfig'.astro.setup{
-    cmd = { "astro-ls", "--stdio" },
-    filetypes = { "astro" },
-    init_options = {
-        configuration = {},
-        typescript = {
-            serverPath = ""
-        }
-    }
-}
 
