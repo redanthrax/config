@@ -2,7 +2,7 @@ local Remap = require("red.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
-local sumneko_root_path = "/home/red/source/sumneko"
+local sumneko_root_path = "/home/red/source/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
