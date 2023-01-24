@@ -107,7 +107,7 @@ local function config(_config)
             }) end)
 			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
 			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
-			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+			nnoremap("<C-s>", function() vim.lsp.buf.signature_help() end)
 		end,
 	}, _config or {})
 end
@@ -211,3 +211,8 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	include = nil, -- Load all languages
 	exclude = {},
 })
+
+require('lint').linters_by_ft = {
+  go = {'golangcilint'}
+}
+

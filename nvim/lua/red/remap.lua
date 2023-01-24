@@ -34,3 +34,10 @@ nnoremap('<leader>p', '"+p')
 nnoremap('<leader>P', '"+P')
 nnoremap('<leader>y', '"+y')
 nnoremap('<leader>Y', '"+y$')
+
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})

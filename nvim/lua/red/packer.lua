@@ -41,4 +41,6 @@ return require('packer').startup(function(use)
     use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
     use("tpope/vim-abolish")
     use("olimorris/onedarkpro.nvim")
+    use("mfussenegger/nvim-lint")
+    use("darrikonn/vim-gofmt")
 end)
