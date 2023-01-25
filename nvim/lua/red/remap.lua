@@ -41,3 +41,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
+
+nnoremap('<leader>df', '<cmd>lua vim.diagnostic.open_float()<cr>')
