@@ -43,3 +43,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 nnoremap('<leader>df', '<cmd>lua vim.diagnostic.open_float()<cr>')
+
+nnoremap('<leader>la', '<cmd>LLPStartPreview<cr>')
