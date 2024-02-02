@@ -20,6 +20,10 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     }
+  },
+  {
+    "lervag/vimtext",
+    lazy = false
   }
 }
 
