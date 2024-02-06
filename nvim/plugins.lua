@@ -22,7 +22,7 @@ local plugins = {
     }
   },
   {
-    "lervag/vimtext",
+    "lervag/vimtex",
     lazy = false
   }
 }
