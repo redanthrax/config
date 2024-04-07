@@ -19,7 +19,7 @@
 
     services.xserver = {
         layout = "us";
-        xkbVarient = "";
+        xkbVariant = "";
     };
 
     users.users.red = {
