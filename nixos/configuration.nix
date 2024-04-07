@@ -30,10 +30,16 @@
     };
 
     nixpkgs.config.allowUnfree = true;
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     environment.systemPackages = with pkgs; [
-
+        git
+        neovim
+        wget
+        curl
     ];
+
+    environment.variables.EDITOR = "neovim";
 
     system.stateVersion = "23.11";
 }
