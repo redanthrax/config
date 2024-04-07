@@ -9,7 +9,7 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    network.hostName = "redrazer";
+    networking.hostName = "redrazer";
 
     networking.networkmanager.enable = true;
 
