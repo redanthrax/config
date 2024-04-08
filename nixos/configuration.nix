@@ -45,14 +45,28 @@ in
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.opengl.enable = true;
+    hardware.opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+    };
+    hardware.nvidia = {
+        modesetting.enable = true;
+        powerManagement.enable = false;
+        powerManagement.finegrained = false;
+        open = false;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 
     environment.systemPackages = with pkgs; [
         git
         neovim
         wget
         curl
+        lshw
         waybar
         mako
         libnotify
