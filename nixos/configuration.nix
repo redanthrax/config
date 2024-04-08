@@ -49,6 +49,11 @@
         brave
     ];
 
+    fonts.packages = with pkgs; [
+        fira-code
+        fira-code-symbols
+    ];
+
     programs.hyprland = {
       # Install the packages from nixpkgs
       enable = true;
