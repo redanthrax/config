@@ -45,6 +45,7 @@
         swww
         wofi
         dolphin
+        nm-applet
     ];
 
     programs.hyprland = {
