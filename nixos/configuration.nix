@@ -37,6 +37,7 @@
         neovim
         wget
         curl
+        waybar
     ];
 
     programs.hyprland = {
