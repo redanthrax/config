@@ -45,7 +45,7 @@
         swww
         wofi
         dolphin
-        nm-applet
+        networkmanagerapplet
     ];
 
     programs.hyprland = {
