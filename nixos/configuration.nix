@@ -74,7 +74,7 @@
             swtpm.enable = true;
             ovmf = {
                 enable = true;
-                packages = [(unstable.OVMF.override {
+                packages = pkgs: [(pkgs.unstable.OVMF.override {
                     secureBoot = true;
                     tpmSupport = true;
                 }).fd];
