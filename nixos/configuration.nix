@@ -64,7 +64,7 @@ in
     hardware.nvidia.prime = {
         sync.enable = true;
         intelBusId = "PCI:0:0:2";
-        nvidiaBusI = "PCI:0:1:0";
+        nvidiaBusId = "PCI:0:1:0";
     };
 
     environment.systemPackages = with pkgs; [
