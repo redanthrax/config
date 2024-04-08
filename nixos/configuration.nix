@@ -45,6 +45,10 @@ in
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+    services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.opengl.enable = true;
+    hardware.video.hidpi.enable = true;
+
     environment.systemPackages = with pkgs; [
         git
         neovim
