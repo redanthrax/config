@@ -73,11 +73,11 @@
             runAsRoot = true;
             swtpm.enable = true;
             ovmf = {
-            enable = true;
-            packages = [(pkgs.unstable.OVMF.override {
-                secureBoot = true;
-                tpmSupport = true;
-            }).fd];
+                enable = true;
+                packages = [(unstable.OVMF.override {
+                    secureBoot = true;
+                    tpmSupport = true;
+                }).fd];
             };
         };
     };
