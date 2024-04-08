@@ -39,6 +39,13 @@
         curl
     ];
 
+    programs.hyprland = {
+      # Install the packages from nixpkgs
+      enable = true;
+      # Whether to enable XWayland
+      xwayland.enable = true;
+    };
+
     environment.variables.EDITOR = "neovim";
 
     system.stateVersion = "23.11";
