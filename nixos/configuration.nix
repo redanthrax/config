@@ -45,7 +45,6 @@ in
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.opengl = {
         enable = true;
