@@ -25,7 +25,7 @@
     users.users.red = {
         isNormalUser = true;
         description = "red";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
         packages = with pkgs; [];
     };
 
@@ -47,6 +47,9 @@
         dolphin
         networkmanagerapplet
         brave
+        discord
+        teams-for-linux
+        docker
     ];
 
     fonts.packages = with pkgs; [
@@ -59,6 +62,24 @@
       enable = true;
       # Whether to enable XWayland
       xwayland.enable = true;
+    };
+
+    programs.virt-manager.enable = true;
+
+    virtualisation.libvirtd = {
+        enable = true;
+        qemu = {
+            package = pkgs.qemu_kvm;
+            runAsRoot = true;
+            swtpm.enable = true;
+            ovmf = {
+            enable = true;
+            packages = [(pkgs.unstable.OVMF.override {
+                secureBoot = true;
+                tpmSupport = true;
+            }).fd];
+            };
+        };
     };
 
     environment.variables.EDITOR = "neovim";
