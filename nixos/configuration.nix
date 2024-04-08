@@ -51,6 +51,7 @@ in
         driSupport = true;
         driSupport32Bit = true;
     };
+
     hardware.nvidia = {
         modesetting.enable = true;
         powerManagement.enable = false;
@@ -59,6 +60,12 @@ in
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
+    hardware.nvidia.prime = {
+        sync.enable = true;
+        intelBusId = "PCI:0:0:2";
+        nvidiaBusI = "PCI:0:1:0";
+    }
 
     environment.systemPackages = with pkgs; [
         git
