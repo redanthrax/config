@@ -22,6 +22,13 @@ in
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    boot.extraModprobeConfig = ''
+      blacklist nouveau
+      options nouveau modeset=0
+    '';
+
+    boot.blacklistedKernelModules = [ "nouveau" ];
+
     networking.hostName = "redrazer";
 
     networking.networkmanager.enable = true;
@@ -33,7 +40,10 @@ in
     services.xserver = {
         layout = "us";
         xkbVariant = "";
+	videoDrivers = [ "intel" "nvidia" ];
     };
+
+    services.logind.lidSwitchExternalPower = "ignore";
 
     users.users.red = {
         isNormalUser = true;
@@ -45,7 +55,6 @@ in
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    services.xserver.videoDrivers = [ "nvidia" ];
     hardware.opengl = {
         enable = true;
         driSupport = true;
@@ -89,16 +98,39 @@ in
         bitwarden
     ];
 
-    fonts.packages = with pkgs; [
-        fira-code
-        fira-code-symbols
-    ];
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        autosuggestions.enable = true;
+        syntaxHighlighting.enable = true;
+    };
+    programs.neovim.enable = true;
+    programs.neovim.defaultEditor = true;
+
+    fonts = {
+    	packages = with pkgs; [
+		fira-code
+		fira-code-symbols
+		font-awesome
+	    ];
+
+	    fontconfig = {
+		enable = true;
+		defaultFonts = {
+		    monospace = [ "Fira Code" ];
+		};
+	};
+    };
 
     programs.hyprland = {
-      # Install the packages from nixpkgs
       enable = true;
-      # Whether to enable XWayland
+      enableNvidiaPatches = true;
       xwayland.enable = true;
+    };
+
+    environment.sessionVariables = {
+    	WLR_NO_HARDWARE_CURSORS = "1";
+	NIXOS_OZONE_WL = "1";
     };
 
     programs.virt-manager.enable = true;
@@ -117,6 +149,16 @@ in
                 }).fd];
             };
         };
+    };
+
+    sound.enable = true;
+    security.rtkit.enable = true;
+    services.pipewire = {
+    	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+	jack.enable = true;
     };
 
     environment.variables.EDITOR = "neovim";
