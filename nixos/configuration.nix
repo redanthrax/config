@@ -47,7 +47,6 @@ in
 
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.opengl.enable = true;
-    hardware.video.hidpi.enable = true;
 
     environment.systemPackages = with pkgs; [
         git
