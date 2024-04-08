@@ -38,6 +38,13 @@
         wget
         curl
         waybar
+        mako
+        libnotify
+        kitty
+        alacritty
+        swww
+        wofi
+        dolphin
     ];
 
     programs.hyprland = {
