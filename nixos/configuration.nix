@@ -46,6 +46,7 @@
         wofi
         dolphin
         networkmanagerapplet
+        brave
     ];
 
     programs.hyprland = {
