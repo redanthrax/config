@@ -54,7 +54,7 @@ in
     users.users.red = {
         isNormalUser = true;
         description = "red";
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
         shell = pkgs.zsh;
         packages = with pkgs; [];
     };
@@ -135,12 +135,10 @@ in
         brave
         discord
         teams-for-linux
-        docker
         bitwarden
         pavucontrol
         home-manager
         samba
-        docker
         minikube
         cifs-utils
         azure-cli
@@ -157,6 +155,7 @@ in
         grim
         slurp
         swappy
+        dig
     ];
 
     programs = {
@@ -269,6 +268,14 @@ set -g status-position top
                 }).fd];
             };
         };
+    };
+
+    virtualisation.docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
     };
 
     sound.enable = true;
