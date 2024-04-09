@@ -154,6 +154,9 @@ in
         go
         fd
         wl-clipboard
+        grim
+        slurp
+        swappy
     ];
 
     programs = {
