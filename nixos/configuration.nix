@@ -156,6 +156,7 @@ in
         slurp
         swappy
         dig
+        gopls
     ];
 
     programs = {
