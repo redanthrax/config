@@ -49,7 +49,7 @@ in
 
     services.logind.lidSwitchExternalPower = "ignore";
 
-    users.defaultUserShell = pkgs.zsh;
+    #users.defaultUserShell = pkgs.zsh;
 
     users.users.red = {
         isNormalUser = true;
@@ -78,11 +78,11 @@ in
 	home.stateVersion = "23.11";
     };
 
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
+	  qt = {
+	    enable = true;
+	    platformTheme = "gnome";
+	    style = "adwaita-dark";
+	  };
 
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -160,25 +160,25 @@ in
     ];
 
     programs = {
-   zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      zsh-autoenv.enable = true;
-      syntaxHighlighting.enable = true;
-      ohMyZsh = {
-         enable = true;
-         #theme = "robbyrussel";
-         plugins = [
-           "git"
-           "npm"
-           "history"
-           "node"
-           "rust"
-           "deno"
-         ];
-      };
-   };
-};
+	   zsh = {
+	      enable = true;
+	      autosuggestions.enable = true;
+	      zsh-autoenv.enable = true;
+	      syntaxHighlighting.enable = true;
+	      ohMyZsh = {
+		 enable = true;
+		 #theme = "robbyrussel";
+		 plugins = [
+		   "git"
+		   "npm"
+		   "history"
+		   "node"
+		   "rust"
+		   "deno"
+		 ];
+	      };
+	   };
+	};
 
     programs.neovim.enable = true;
     programs.neovim.defaultEditor = true;
@@ -250,7 +250,7 @@ set -g status-position top
     environment.sessionVariables = {
     	WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
-      XDG_CONFIG_HOME = "@{HOME}/.config";
+      #XDG_CONFIG_HOME = "@{HOME}/.config";
     };
 
     programs.virt-manager.enable = true;
