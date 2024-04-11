@@ -31,6 +31,11 @@ in
 
     networking.hostName = "redrazer";
 
+    networking.extraHosts =
+    ''
+    192.168.49.2 windmill
+    '';
+
     networking.networkmanager.enable = true;
 
     time.timeZone = "America/Los_Angeles";
@@ -179,6 +184,11 @@ in
         dig
         gopls
         android-file-transfer
+        k9s
+        kubectl
+        gh
+        libsForQt5.krdc
+        kubernetes-helm
     ];
 
     programs = {
