@@ -56,7 +56,28 @@ in
         description = "red";
         extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
         shell = pkgs.zsh;
-        packages = with pkgs; [];
+        packages = with pkgs; [
+          ncmpcpp
+          mpd
+        ];
+    };
+
+    services.mpd = {
+      enable = true;
+      user = "red";
+      musicDirectory = "/home/red/Music";
+      network.listenAddress = "any";
+      startWhenNeeded = true;
+      extraConfig = ''
+        audio_output {
+          type "pipewire"
+          name "My PipeWire Output"
+        }
+    '';
+    };
+
+    systemd.services.mpd.environment = {
+      XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.red.uid}";
     };
 
     home-manager.users.red = { pkgs, ... }: {
@@ -157,6 +178,7 @@ in
         swappy
         dig
         gopls
+        android-file-transfer
     ];
 
     programs = {
@@ -299,7 +321,7 @@ set -g status-position top
     ];
   };
 
-    environment.variables.EDITOR = "neovim";
+    environment.variables.EDITOR = "nvim";
 
     fileSystems."/mnt/share" = {
         device = "//10.0.0.2/Home";
