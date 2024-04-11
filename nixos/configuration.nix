@@ -54,7 +54,7 @@ in
     users.users.red = {
         isNormalUser = true;
         description = "red";
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "audio" ];
         shell = pkgs.zsh;
         packages = with pkgs; [
           ncmpcpp
@@ -77,7 +77,7 @@ in
     };
 
     systemd.services.mpd.environment = {
-      XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.red.uid}";
+      XDG_RUNTIME_DIR = "/run/user/1000";
     };
 
     home-manager.users.red = { pkgs, ... }: {
