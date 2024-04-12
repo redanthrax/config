@@ -33,7 +33,8 @@ in
 
     networking.extraHosts =
     ''
-    192.168.49.2 windmill
+    127.0.0.1 windmill
+    192.168.39.114 windmill
     '';
 
     networking.networkmanager.enable = true;
@@ -45,8 +46,8 @@ in
     services.xserver = {
         layout = "us";
         xkbVariant = "";
-	      #videoDrivers = [ "intel" "nvidia" ];
-	      videoDrivers = [ "nvidia" ];
+	      videoDrivers = [ "intel" "nvidia" ];
+	      #videoDrivers = [ "nvidia" ];
     };
 
     xdg.portal.enable = true;
@@ -118,9 +119,9 @@ in
         driSupport = true;
         driSupport32Bit = true;
          extraPackages = with pkgs; [
-          #intel-media-driver # LIBVA_DRIVER_NAME=iHD
-          #intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-          #libvdpau-va-gl
+          intel-media-driver # LIBVA_DRIVER_NAME=iHD
+          intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+          libvdpau-va-gl
         ];
     };
 
@@ -189,6 +190,10 @@ in
         gh
         libsForQt5.krdc
         kubernetes-helm
+        podman
+        docker-machine
+        docker-machine-kvm2
+        glibc
     ];
 
     programs = {
@@ -198,16 +203,15 @@ in
 	      zsh-autoenv.enable = true;
 	      syntaxHighlighting.enable = true;
 	      ohMyZsh = {
-		 enable = true;
-		 #theme = "robbyrussel";
-		 plugins = [
-		   "git"
-		   "npm"
-		   "history"
-		   "node"
-		   "rust"
-		   "deno"
-		 ];
+         enable = true;
+         plugins = [
+           "git"
+           "npm"
+           "history"
+           "node"
+           "rust"
+           "deno"
+         ];
 	      };
 	   };
 	};
@@ -334,11 +338,11 @@ set -g status-position top
     environment.variables.EDITOR = "nvim";
 
     fileSystems."/mnt/share" = {
-        device = "//10.0.0.2/Home";
-	fsType = "cifs";
-	options = let
-	    automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-	in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+      device = "//10.0.0.2/Home";
+      fsType = "cifs";
+      options = let
+          automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+      in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
     };
 
     system.stateVersion = "23.11";
