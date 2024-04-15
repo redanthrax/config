@@ -86,6 +86,10 @@ in
       XDG_RUNTIME_DIR = "/run/user/1000";
     };
 
+    services.duplicati = {
+      enable = true;
+    };
+
     home-manager.users.red = { pkgs, ... }: {
         programs.home-manager.enable = true;
         dconf.settings = {
@@ -194,6 +198,11 @@ in
         docker-machine
         docker-machine-kvm2
         glibc
+        obsidian
+    ];
+
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-25.9.0"
     ];
 
     programs = {
@@ -341,8 +350,8 @@ set -g status-position top
       device = "//10.0.0.2/Home";
       fsType = "cifs";
       options = let
-          automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-      in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+          automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
+      in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
     };
 
     system.stateVersion = "23.11";
