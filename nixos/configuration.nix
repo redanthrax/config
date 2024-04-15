@@ -60,12 +60,13 @@ in
     users.users.red = {
         isNormalUser = true;
         description = "red";
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "audio" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "audio" "duplicati"];
         shell = pkgs.zsh;
         packages = with pkgs; [
           ncmpcpp
           mpd
         ];
+
     };
 
     services.mpd = {
@@ -88,6 +89,7 @@ in
 
     services.duplicati = {
       enable = true;
+      user = "red";
     };
 
     home-manager.users.red = { pkgs, ... }: {
@@ -328,10 +330,10 @@ set -g status-position top
     security.rtkit.enable = true;
     services.pipewire = {
     	enable = true;
-	alsa.enable = true;
-	alsa.support32Bit = true;
-	pulse.enable = true;
-	jack.enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
 
     nixpkgs = {
