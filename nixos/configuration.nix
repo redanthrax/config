@@ -201,6 +201,7 @@ in
         docker-machine-kvm2
         glibc
         obsidian
+        freerdp
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
