@@ -202,6 +202,7 @@ in
         glibc
         obsidian
         freerdp
+        zip
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
