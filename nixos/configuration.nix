@@ -220,6 +220,7 @@ in
         wlr-randr
         steam
         nvidia-offload
+        nethack
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
