@@ -3,6 +3,13 @@
 let
   unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
   home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec "$@"
+  '';
 in
 {
     imports =
@@ -26,6 +33,11 @@ in
       blacklist nouveau
       options nouveau modeset=0
     '';
+
+    boot.kernelParams = [
+      "kvm.ignore_msrs=1"
+      "kvm.report_ignored_msrs=0"
+    ];
 
     boot.blacklistedKernelModules = [ "nouveau" ];
 
@@ -203,6 +215,11 @@ in
         obsidian
         freerdp
         zip
+        lynx
+        nwg-displays
+        wlr-randr
+        steam
+        nvidia-offload
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
@@ -351,6 +368,14 @@ set -g status-position top
     environment.variables.EDITOR = "nvim";
 
     fileSystems."/mnt/share" = {
+      device = "//10.0.0.2/Share";
+      fsType = "cifs";
+      options = let
+          automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
+      in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+    };
+
+    fileSystems."/mnt/home" = {
       device = "//10.0.0.2/Home";
       fsType = "cifs";
       options = let
