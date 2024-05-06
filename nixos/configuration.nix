@@ -149,7 +149,7 @@ in
         powerManagement.finegrained = false;
         open = false;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = config.boot.kernelPackages.nvidiaPackages.production;
     };
 
     hardware.nvidia.prime = {
@@ -221,6 +221,8 @@ in
         steam
         nvidia-offload
         nethack
+        vulkan-tools
+        lutris
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
