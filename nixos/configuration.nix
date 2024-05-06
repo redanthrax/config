@@ -223,6 +223,8 @@ in
         nethack
         vulkan-tools
         lutris
+        azure-functions-core-tools
+        nodejs_20
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
