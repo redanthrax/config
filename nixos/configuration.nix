@@ -225,6 +225,8 @@ in
         lutris
         azure-functions-core-tools
         nodejs_20
+        gnumake
+        lua
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
