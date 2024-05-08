@@ -74,6 +74,7 @@ in
     nodejs_20
     gnumake
     lua
+    bruno
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
