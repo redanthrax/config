@@ -75,6 +75,7 @@ in
     gnumake
     lua
     bruno
+    bash
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
