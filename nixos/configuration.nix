@@ -36,8 +36,7 @@ in
     services.xserver = {
         layout = "us";
         xkbVariant = "";
-	      videoDrivers = [ "intel" "nvidia" ];
-	      #videoDrivers = [ "nvidia" ];
+	      videoDrivers = [ "nvidia" ];
     };
 
     xdg.portal.enable = true;
@@ -138,6 +137,7 @@ in
     environment.sessionVariables = {
     	WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
       #XDG_CONFIG_HOME = "@{HOME}/.config";
     };
 
@@ -188,6 +188,8 @@ in
   };
 
     environment.variables.EDITOR = "nvim";
+
+    nix.settings.extra-sandbox-paths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
 
 
     system.stateVersion = "23.11";

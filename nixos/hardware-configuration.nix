@@ -7,7 +7,7 @@
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usbhid" "usb_storage" "sd_mod" ];
     boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-intel" ];
+    boot.kernelModules = [ "i915" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "kvm-intel" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
@@ -49,7 +49,7 @@
         enable = true;
         driSupport = true;
         driSupport32Bit = true;
-         extraPackages = with pkgs; [
+        extraPackages = with pkgs; [
           intel-media-driver # LIBVA_DRIVER_NAME=iHD
           intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
           libvdpau-va-gl

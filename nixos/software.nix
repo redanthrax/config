@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
+
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
     export __VK_LAYER_NV_optimus=NVIDIA_only
@@ -70,12 +70,17 @@ in
     nethack
     vulkan-tools
     lutris
-    azure-functions-core-tools
-    nodejs_20
+    nodejs_18
     gnumake
     lua
     bruno
     bash
+    powershell
+    dotnet-sdk
+    openssl
+    azure-functions-core-tools
+    nvtop
+    smartmontools
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
