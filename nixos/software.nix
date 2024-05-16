@@ -81,6 +81,7 @@ in
     azure-functions-core-tools
     nvtop
     smartmontools
+    vscode
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
