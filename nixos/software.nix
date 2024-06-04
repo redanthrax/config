@@ -82,10 +82,15 @@ in
     nvtop
     smartmontools
     vscode
+    libGL
+    ffmpeg
+    lxqt.lxqt-policykit
+    etcher
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
+    "electron-19.1.9"
   ];
 
     programs = {
